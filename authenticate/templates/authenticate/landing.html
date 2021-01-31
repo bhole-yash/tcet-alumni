@@ -1,15 +1,23 @@
 {% extends 'authenticate/base_LS.html' %}
 
 {% block content %}
-
+<div>
 <div class="section-title row text-center">
                 <div class="col-md-8 offset-md-2">
-                    <h3>Our Timeline</h3>
+                    <h3>Welcome!</h3>
+                    {% if user.is_authenticated %}
+
+                    <button type="button" class="btn btn-info hover-btn-new"><a href="{% url 'logout' %}">Logout</a></button>
+
+                    {% else %}
                     <button type="button" class="btn btn-success hover-btn-new"><a href="{% url 'login' %}">Login</a></button>
+
+                    {% endif %}
+
                     <button type="button" class="btn btn-danger hover-btn-new">Register</button>
                 </div>
             </div><!-- end title -->
-
+</div>
 
 
 {% endblock %}

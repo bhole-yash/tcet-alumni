@@ -40,7 +40,13 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <style>
+        hr.new5 {
+        border: 10px solid green;
+        border-radius: 5px;
+      } 
+    </style>
+    
 </head>
 <body>
 
@@ -50,11 +56,12 @@
     <div class="col-md-12 col-sm-12 text-right">
         <div class="big-tagline">
             <h2><strong>TCET </strong> Alumni Portal</h2>
-            <p class="lead">Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. </p>
+            <p class="lead">Thakur Student Section | Thakur College of Engineering and technology </p>
 
         </div>
     </div>
 </div><!-- end row -->
+<hr class="new5">
 
 
     <!-- LOADER -->
@@ -71,7 +78,7 @@
     <div class="container">
     {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-warning alert-dismissible" role="alert">
+            <div class="alert alert-primary alert-dismissible" role="alert">
             <button class="close" data-dismiss="alert">
                 <small><sup>x</sup></small>
             </button>
@@ -79,6 +86,7 @@
             </div>
         {% endfor %}
     {% endif %}
+</div>
 </div>
 {% block content %}
 
