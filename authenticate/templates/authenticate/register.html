@@ -1,0 +1,34 @@
+{% extends 'authenticate/base_LS.html' %}
+
+{% block content %}
+
+
+</div>
+</div><!-- end container -->
+<div class="jumbotron">
+<div class="container">
+    <h1 class="display-4">Register</h1>
+    
+    <form method='POST' action="{% url 'register' %}">
+        {% csrf_token %}
+
+        {% if form.errors %}
+        <p>Your Form has Errors!....</p> 
+        {% endif %}
+
+        {{ form.as_p }}
+<br>
+    <button type="submit " value="Register" class="btn btn-secondary">
+        Register
+        </button>
+    </form>
+
+
+</div>
+</div>
+
+
+
+
+
+{% endblock %}

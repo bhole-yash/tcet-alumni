@@ -4,17 +4,23 @@
 <div>
 <div class="section-title row text-center">
                 <div class="col-md-8 offset-md-2">
-                    <h3>Welcome!</h3>
+                    
                     {% if user.is_authenticated %}
-
+                    <h3>Welcome!</h3>
                     <button type="button" class="btn btn-info hover-btn-new"><a href="{% url 'logout' %}">Logout</a></button>
+                    <p>Name: {{user.first_name}} {{user.last_name}}</p>
+                    <p>Username: {{user.username}}</p>
+                    <p>Email: {{user.email}}</p>
+
 
                     {% else %}
+                    <h3>Please Authenticate Yourself to get started!</h3>
                     <button type="button" class="btn btn-success hover-btn-new"><a href="{% url 'login' %}">Login</a></button>
-
+                    <button type="button" class="btn btn-danger hover-btn-new"><a href="{% url 'register' %}">Register</a></button>
                     {% endif %}
 
-                    <button type="button" class="btn btn-danger hover-btn-new">Register</button>
+
+                    
                 </div>
             </div><!-- end title -->
 </div>
