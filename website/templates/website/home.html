@@ -67,14 +67,14 @@
 										{% if request.user.is_authenticated %}
 										<h2><strong>Hi, </strong> {{request.user.username}}</h2>
 										<p class="lead">Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. </p>
-											<a href="{% url 'contact' %}" class="hover-btn-new"><span>Contact Us</span></a>
+											<a href="{% url 'account' %}" class="hover-btn-new"><span>account</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="{% url 'about' %}" class="hover-btn-new"><span>Read More</span></a>
+											<a href="{% url 'about' %}" class="hover-btn-new"><span></span></a>
 
 										{% else %}
 										<h2><strong>TCET </strong> Alumni Portal</h2>
 										<p class="lead">Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. </p>
-											<a href="{% url 'register' %}" class="hover-btn-new"><span>Login</span></a>
+											<a href="{% url 'login' %}" class="hover-btn-new"><span>Login</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<a href="{% url 'about' %}" class="hover-btn-new"><span>Read More</span></a>
 

@@ -1,29 +1,45 @@
 {% extends 'authenticate/base_LS.html' %}
 
 {% block content %}
-<div>
-<div class="section-title row text-center">
-                <div class="col-md-8 offset-md-2">
-                    
-                    {% if user.is_authenticated %}
-                    <h3>Welcome!</h3>
-                    <button type="button" class="btn btn-info hover-btn-new"><a href="{% url 'logout' %}">Logout</a></button>
-                    <p>Name: {{user.first_name}} {{user.last_name}}</p>
-                    <p>Username: {{user.username}}</p>
-                    <p>Email: {{user.email}}</p>
 
 
-                    {% else %}
-                    <h3>Please Authenticate Yourself to get started!</h3>
-                    <button type="button" class="btn btn-success hover-btn-new"><a href="{% url 'login' %}">Login</a></button>
-                    <button type="button" class="btn btn-danger hover-btn-new"><a href="{% url 'register' %}">Register</a></button>
-                    {% endif %}
-
-
-                    
-                </div>
-            </div><!-- end title -->
 </div>
+</div><!-- end container -->
+<div class="jumbotron">
+<div class="container">
+    <h1 class="display-4">Account</h1>
+
+    <form method="post">{% csrf_token %}
+        {% for field in account_form %}
+            <p>
+                {{field.label_tag}}
+                {{field}}
+
+                {% if field.help_text %}
+                    <small style="color: grey;">{{field.help_text}}</small>
+                {% endif %}
+
+                {% for error in field.errors %}
+                    <p style="color: red;">{{error}}</p>
+                {% endfor %}
+            </p>
+        {% endfor %}
+
+        {% if account_form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+            {{ account_form.non_field_errors }}
+            </div>
+        {% endif %}
+        <button type="submit">Log in</button>
+
+    </form>
+
+
+</div>
+</div>
+
+
+
 
 
 {% endblock %}
