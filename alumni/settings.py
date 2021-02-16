@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # my apps
     'website',
     'authenticate',
 ]
@@ -68,6 +70,8 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_USER_MODEL ='authenticate.Account'
 
 WSGI_APPLICATION = 'alumni.wsgi.application'
 

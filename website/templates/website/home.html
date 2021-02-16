@@ -15,8 +15,8 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+						<li class="nav-item active"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
 
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Blog </a>
@@ -25,13 +25,23 @@
 								<a class="dropdown-item" href="blog-single.html">Blog single </a>
 							</div>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="members.html">Members</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'members' %}">Members</a></li>
 						
-						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
 					</ul>
+					{% if request.user.is_authenticated %}
 					<ul class="nav navbar-nav navbar-right">
-                        <li><a class="hover-btn-new log orange" href="#" data-toggle="modal" data-target="#login"><span>Alumni?</span></a></li>
+                        <li><a class="hover-btn-new log orange" href="{% url 'logout' %}" ><span>Logout</span></a></li>
                     </ul>
+					{% else %}
+					<ul class="nav navbar-nav navbar-right">
+                        <li><a class="hover-btn-new log orange" href="{% url 'register' %}"><span>Alumni?</span></a></li>
+                    </ul>
+
+					{% endif %}
+
+					
+					
 				</div>
 			</div>
 		</nav>
@@ -53,11 +63,24 @@
 							<div class="row">
 								<div class="col-md-12 col-sm-12 text-right">
 									<div class="big-tagline">
+										
+										{% if request.user.is_authenticated %}
+										<h2><strong>Hi, </strong> {{request.user.username}}</h2>
+										<p class="lead">Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. </p>
+											<a href="{% url 'account' %}" class="hover-btn-new"><span>account</span></a>
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<a href="{% url 'about' %}" class="hover-btn-new"><span></span></a>
+
+										{% else %}
 										<h2><strong>TCET </strong> Alumni Portal</h2>
 										<p class="lead">Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. </p>
-											<a href="{% url 'contact' %}" class="hover-btn-new"><span>Contact Us</span></a>
+											<a href="{% url 'login' %}" class="hover-btn-new"><span>Login</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<a href="{% url 'about' %}" class="hover-btn-new"><span>Read More</span></a>
+
+										{% endif %}
+
+										
 									</div>
 								</div>
 							</div><!-- end row -->            
@@ -66,7 +89,7 @@
 				</div><!-- end section -->
 			</div>
 			<div class="carousel-item">
-				<div id="home" class="first-section" style="background-image:url('images/slider-02.jpg');">
+				<div id="home" class="first-section" style="background-image:url({% static 'website/images/slider-02.jpg' %});">
 					<div class="dtab">
 						<div class="container">
 							<div class="row">
@@ -85,7 +108,7 @@
 				</div><!-- end section -->
 			</div>
 			<div class="carousel-item">
-				<div id="home" class="first-section" style="background-image:url('images/slider-03.jpg');">
+				<div id="home" class="first-section" style="background-image:url({% static 'website/images/slider-03.jpg' %});">
 					<div class="dtab">
 						<div class="container">
 							<div class="row">
