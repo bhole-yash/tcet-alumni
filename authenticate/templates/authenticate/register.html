@@ -8,25 +8,23 @@
 <div class="jumbotron">
 <div class="container">
     <h1 class="display-4">Register</h1>
-    
-    <form method="post">{% csrf_token %}
-        {% for field in registration_form %}
-            <p>
-                {{field.label_tag}}
-                {{field}}
-    
-                {% if field.help_text %}
-                    <small style="color: grey;">{{field.help_text}}</small>
-                {% endif %}
-    
-                {% for error in field.errors %}
-                    <p style="color: red;">{{error}}</p>
-                {% endfor %}
-            </p>
+
+    <form method="post">
+    {% csrf_token %}
+    {% for field in registration_form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
         {% endfor %}
-        <button type="submit">Register</button>
-        
-    </form>
+      </p>
+    {% endfor %}
+    <button type="submit">Register</button>
+  </form>
 
 
 </div>
@@ -37,3 +35,9 @@
 
 
 {% endblock %}
+
+
+
+
+
+
