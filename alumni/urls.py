@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -9,10 +9,12 @@ from authenticate.views import (
     registration_view,
     logout_view,
     login_view,
-    account_view
+    account_view,
+    must_authenticate_view,
+
 )
 from website.views import (
-    contact, about, members, home,home1
+    contact, about, members, home, home_screen_view
 )
 
 urlpatterns = [
@@ -20,10 +22,12 @@ urlpatterns = [
     # path('', include('website.urls')),
     # path('', include('authenticate.urls')),
     path('logout/', logout_view, name='logout'),
+    path('must_authenticate', must_authenticate_view, name="must_authenticate"),
     path('register/', registration_view, name='register'),
-    path('blog',include('blog.urls','blog')),
+    path('home1/', home_screen_view, name='home1'),
+    path('blog', include('blog.urls', 'blog')),
     path('', home, name="home"),
-    path('home1.html', home1, name="home1"),
+
     path('contact.html', contact, name="contact"),
     path('about.html', about, name="about"),
     path('members.html', members, name="members"),

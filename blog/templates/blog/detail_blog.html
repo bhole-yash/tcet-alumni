@@ -1,0 +1,52 @@
+{% extends 'registration\base_LS.html' %}
+
+
+{% block content %}
+
+<style type="text/css">
+  .create-form {
+	    width: 100%;
+	    max-width: 100%;
+	    padding: 15px;
+	    margin: auto;
+  	}
+  .card{
+      max_width:700px;
+
+  }
+  .container{
+      padding:20px;
+  }
+
+
+
+  	.submit-button{
+  		max-width: 200px;
+  	}
+</style>
+
+
+<div class="container">
+	<div class="row">
+
+		<!-- Blog Post -->
+		<div class="card m-auto">
+			<img class="card-img-top" src="{{blog_post.image.url}}">
+			<div class="card-body mt-2 mb-2">
+			  <h2 class="card-title">{{blog_post.title}}</h2>
+			  <p class="card-text">{{blog_post.body|truncatechars:250}}</p>
+
+			  {% if blog_post.author == request.user %}
+			  	<a href="{% url 'blog:edit' blog_post.slug %}" class="btn btn-primary">Update</a>
+			  {% endif %}
+			</div>
+			<div class="card-footer text-muted">
+			  Posted on {{blog_post.date_published}} by {{blog_post.author}}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock content %}
