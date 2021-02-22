@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
+from operator import attrgetter
 
+from authenticate.models import Account
+from blog.models import BlogPost
 
 # Create your views here.
 
@@ -8,8 +11,6 @@ def home(request):
     return render(request, 'website/home.html', {})
 
 
-def home1(request):
-    return render(request, 'website/home1.html', {})
 
 
 def landing(request):
@@ -50,3 +51,11 @@ def contact(request):
                        "last_name": last_name})
     else:
         return render(request, 'website/contact.html', {})
+
+
+def home_screen_view(request):
+
+    context ={}
+    blog_posts = sorted(BlogPost.objects.all(),key = attrgetter('date_updated'),reverse=True)
+    context['blog_posts'] = blog_posts
+    return render (request,"website/home1.html",context)
