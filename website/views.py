@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 
 
@@ -6,6 +6,10 @@ from django.core.mail import send_mail
 
 def home(request):
     return render(request, 'website/home.html', {})
+
+
+def home1(request):
+    return render(request, 'website/home1.html', {})
 
 
 def landing(request):
