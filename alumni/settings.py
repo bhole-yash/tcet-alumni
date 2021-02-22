@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During Development only!
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -71,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-AUTH_USER_MODEL ='authenticate.Account'
+AUTH_USER_MODEL = 'authenticate.Account'
 
 WSGI_APPLICATION = 'alumni.wsgi.application'
 
