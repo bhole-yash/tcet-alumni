@@ -50,30 +50,38 @@
 			<!-- Top 'create post' bar -->
 			<div class="d-lg-none mb-3">
 				<div class="card m-auto d-flex flex-column p-3">
-					<img class="img-fluid d-block m-auto pb-2" src="{% static 'codingwithmitch_logo.png' %}" width="72" height="72">
-					<p class="lead">In this course you'll learn how to build a simple blog with user registration and blog CRUD functionality. Django is a powerful
-	  					framework and you'll see why in this course.</p>
+					<img class="img-fluid d-block m-auto pb-2" src="{% static 'website/images/logo.png' %}" width="72" height="72">
+					<p class="lead">Post your thoughts, You wanna get out there , Let the world know about your innovative ideas and Views Etc. This too can be used for posting jobs and spreading awareness</p>
 					<p class="m-auto"><a class="btn btn-primary" href="{% url 'blog:create' %}">Create post</a></p>
 				</div>
 			</div>
 			<!-- end Top 'create post' bar -->
 
 			<!-- Blog posts-->
+			{% if blog_posts %}
 			{% for post in blog_posts %}
 				<div class="blog-post-container">
 					{% include 'blog/snippets/blog_post_snippet.html' with blog_post=post %}
 				</div>
 			{% endfor %}
+		{% else %}
+			<div class="blog-post-container">
+				{% include 'blog/snippets/blog_post_snippet.html' with query=query %}
+			</div>
+		{% endif %}
 			<!-- End Blog posts-->
+
+			<!--Pagination-->
+			{% include 'blog/snippets/blog_post_pagination.html' with blog_post=blog_post %}
 		</div>
 		<!-- end blog feed -->
-
+		
 
 		<!-- Right 'create post' column  -->
 		<div class="right-column col-lg-3 d-lg-flex d-none flex-column">
 
 			<div class="card create-post-bar d-flex flex-column p-3">
-				<img class="img-fluid d-block m-auto pb-2" src="{% static 'codingwithmitch_logo.png' %}" width="72" height="72">
+				<img class="img-fluid d-block m-auto pb-2" src="{% static 'website/images/logo.png' %}" width="72" height="72">
 				<p class="lead">In this course you'll learn how to build a simple blog with user registration and blog CRUD functionality. Django is a powerful
   					framework and you'll see why in this course.</p>
 				<p class="m-auto"><a class="btn btn-primary" href="{% url 'blog:create' %}">Create post</a></p>

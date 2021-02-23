@@ -1,2 +1,10 @@
-
+.search-bar{
+    max-width: 500px;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top:  10px;
+    margin-bottom: 10px;
+    
+}
 /** ADD YOUR AWESOME CODES HERE **/

@@ -36,6 +36,11 @@
     <!-- Modernizer for Portfolio -->
     <script src="{% static 'website/js/modernizer.js' %}"></script>
 
+  
+    
+ 
+
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -103,8 +108,12 @@
 		</nav>
 	</header>
 	<!-- End header -->
-
-
+    <div class="container">   
+    <div class="search-bar left-column col-lg-7 offset-lg-1">
+        <form method="get">
+            <input class="form-control"  type="text" name="q" id="id_q" placeholder="Search...">
+        </form>
+    </div>
 
 {% block content %}
 
@@ -116,7 +125,7 @@
 
 
 {% endblock %}
-
+</div>
 
     <footer class="footer">
         <div class="container">
@@ -197,5 +206,9 @@
 			visibleItems: 4
 		});
 	</script>
+    
+    <script type="text/javascript">
+        document.getElementById("id_q").value = "{{query}}"
+    </script>
 </body>
 </html>
