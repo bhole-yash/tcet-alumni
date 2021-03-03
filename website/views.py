@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from operator import attrgetter
+from blog.views import get_blog_queryset
 
 from authenticate.models import Account
 from blog.models import BlogPost
@@ -56,6 +57,12 @@ def contact(request):
 def home_screen_view(request):
 
     context ={}
-    blog_posts = sorted(BlogPost.objects.all(),key = attrgetter('date_updated'),reverse=True)
+
+    query =""
+    if request.GET:
+        query = request.GET['q']
+        context['query'] = str(query)
+
+    blog_posts = sorted(get_blog_queryset(query),key = attrgetter('date_updated'),reverse=True)
     context['blog_posts'] = blog_posts
     return render (request,"website/home1.html",context)
