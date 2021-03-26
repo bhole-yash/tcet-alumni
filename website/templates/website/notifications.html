@@ -1,10 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'website/header_&_footer.html' %}
+{% load static %}
+	{% block content %}
+	<div class="section-title row text-center">
+                <div class="col-md-8 offset-md-2">
+                    <h3>Notification board</h3>
+                    <hr>
+
+                    {% for notification in Notification_list %}
+                    {% if notification.Type == 'Events' %}
+                    <div class="jumbotron jumbotron-fluid" style="background-color:#d1f5ed">
+                      <div class="container">
+                        <h1 class="display-4">{{ notification.Title }}</h1>
+                        <p class="lead">{{ notification.description }}</p>
+                        <div class="float-right">{{ notification.created}}</div><br>
+                      </div>
+                    </div>
+
+                    {% elif notification.Type == 'Infomative' %}
+                    <div class="jumbotron jumbotron-fluid" style="background-color:#a0f582">
+                      <div class="container">
+                        <h1 class="display-4">{{ notification.Title }}</h1>
+                        <p style="color:#ff0909">{{ notification.description }}</p>
+                        <div class="float-right">{{ notification.created}}</div><br>
+                      </div>
+                    </div>
+                    {% elif notification.Type == 'Urgent' %}
+                    <div class="jumbotron jumbotron-fluid" style="background-color:#f3de67">
+                      <div class="container">
+                        <h1 class="display-4">{{ notification.Title }}</h1>
+                        <p class="lead" style="color:#db1ffa">{{ notification.description }}</p>
+                        <div class="float-right">{{ notification.created}}</div><br>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="jumbotron jumbotron-fluid" style="background-color:#29fbff">
+                      <div class="container">
+                        <h1 class="display-4">{{ notification.Title }}</h1>
+                        <p class="lead">{{ notification.description }}</p>
+                          <div class="float-right">{{ notification.Type}}</div><br>
+
+                        <div class="float-right">{{ notification.created}}</div><br>
+                      </div>
+                    </div>
+                    {% endif %}
+
+
+
+                    {% endfor %}
+
+                </div>
+            </div><!-- end title -->
+        <hr>
+    {% endblock %}

@@ -14,13 +14,14 @@ from authenticate.views import (
 
 )
 from website.views import (
-    contact, about, members, home, home_screen_view
+    contact, about, members, home, home_screen_view, notification_system
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include('website.urls')),
     # path('', include('authenticate.urls')),
+    path('notifications/',notification_system, name='notification'),
     path('logout/', logout_view, name='logout'),
     path('must_authenticate', must_authenticate_view, name="must_authenticate"),
     path('register/', registration_view, name='register'),

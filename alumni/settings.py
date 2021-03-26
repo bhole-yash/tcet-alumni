@@ -163,3 +163,5 @@ EMAIL_USE_TLS = False
 # EMAIL_HOST_PASSWORD = '********'
 # # EMAIL_USE_SSL = False
 # EMAIL_USE_TLS = True
+
+# Tcet-alumni All rights reserved

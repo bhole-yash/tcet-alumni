@@ -33,13 +33,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'website/css/custom.css' %}">
 
+    </script>
     <!-- Modernizer for Portfolio -->
     <script src="{% static 'website/js/modernizer.js' %}"></script>
-
-  
-    
- 
-
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -79,13 +75,8 @@
 						<li class="nav-item active"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
 
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Blog </a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="blog.html">Blog </a>
-								<a class="dropdown-item" href="blog-single.html">Blog single </a>
-							</div>
-						</li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'home1' %}">Blog</a></li>
+
 						<li class="nav-item"><a class="nav-link" href="{% url 'members' %}">Members</a></li>
 
 						<li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
@@ -108,12 +99,9 @@
 		</nav>
 	</header>
 	<!-- End header -->
-    <div class="container">   
-    <div class="search-bar left-column col-lg-7 offset-lg-1">
-        <form method="get">
-            <input class="form-control"  type="text" name="q" id="id_q" placeholder="Search...">
-        </form>
-    </div>
+
+
+
 
 {% block content %}
 
@@ -125,7 +113,7 @@
 
 
 {% endblock %}
-</div>
+
 
     <footer class="footer">
         <div class="container">
@@ -206,7 +194,6 @@
 			visibleItems: 4
 		});
 	</script>
-    
     <script type="text/javascript">
         document.getElementById("id_q").value = "{{query}}"
     </script>
